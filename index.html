@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuizVerse — Test Your Mind</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Animated background -->
+    <div class="background">
+        <div class="gradient-orb orb-one"></div>
+        <div class="gradient-orb orb-two"></div>
+        <div class="gradient-orb orb-three"></div>
+        <div class="noise"></div>
+    </div>
+
+
+    <!-- =========================
+         START SCREEN
+    ========================== -->
+
+    <section class="screen start-screen" id="startScreen">
+
+        <div class="start-content">
+
+            <div class="logo">
+                <div class="logo-symbol">Q</div>
+
+                <div>
+                    <strong>QUIZVERSE</strong>
+                    <span>THE ULTIMATE KNOWLEDGE CHALLENGE</span>
+                </div>
+            </div>
+
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                READY FOR THE CHALLENGE?
+            </div>
+
+
+            <h1>
+                How sharp is
+                <span>your mind?</span>
+            </h1>
+
+            <p class="hero-description">
+                Challenge yourself with 10 carefully selected questions.
+                Think fast, build your streak and climb your personal high score.
+            </p>
+
+
+            <div class="game-features">
+
+                <div class="feature">
+                    <div class="feature-icon">🧠</div>
+                    <div>
+                        <strong>10 Questions</strong>
+                        <span>Mixed knowledge</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div>
+                        <strong>15 Seconds</strong>
+                        <span>Per question</span>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔥</div>
+                    <div>
+                        <strong>Build Streaks</strong>
+                        <span>Earn bonus points</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button class="primary-button start-button" id="startButton">
+                <span>START QUIZ</span>
+                <strong>→</strong>
+            </button>
+
+
+            <div class="best-score">
+                <span>PERSONAL BEST</span>
+                <strong id="startBestScore">0</strong>
+                <small>POINTS</small>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUIZ SCREEN
+    ========================== -->
+
+    <section class="screen quiz-screen hidden" id="quizScreen">
+
+        <div class="quiz-container">
+
+
+            <!-- HEADER -->
+
+            <header class="quiz-header">
+
+                <div class="quiz-brand">
+                    <div class="mini-logo">Q</div>
+
+                    <div>
+                        <strong>QUIZVERSE</strong>
+                        <span>KNOWLEDGE CHALLENGE</span>
+                    </div>
+                </div>
+
+
+                <div class="header-stats">
+
+                    <div class="header-stat">
+                        <span>SCORE</span>
+                        <strong id="score">0</strong>
+                    </div>
+
+                    <div class="header-stat streak-stat">
+                        <span>STREAK</span>
+                        <strong id="streak">0 🔥</strong>
+                    </div>
+
+                    <div class="lives" id="lives">
+                        <span>♥</span>
+                        <span>♥</span>
+                        <span>♥</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-area">
+
+                <div class="progress-top">
+                    <span>
+                        QUESTION
+                        <strong id="currentQuestion">01</strong>
+                        <span class="muted">/ 10</span>
+                    </span>
+
+                    <span id="category">
+                        GENERAL KNOWLEDGE
+                    </span>
+                </div>
+
+                <div class="progress-track">
+                    <div
+                        class="progress-bar"
+                        id="progressBar"
+                    ></div>
+                </div>
+
+            </div>
+
+
+            <!-- QUESTION CARD -->
+
+            <main class="question-card">
+
+
+                <!-- QUESTION HEADER -->
+
+                <div class="question-card-top">
+
+                    <div class="difficulty" id="difficulty">
+                        EASY
+                    </div>
+
+
+                    <div class="timer">
+
+                        <svg viewBox="0 0 100 100">
+
+                            <circle
+                                class="timer-background"
+                                cx="50"
+                                cy="50"
+                                r="43"
+                            ></circle>
+
+                            <circle
+                                class="timer-circle"
+                                id="timerCircle"
+                                cx="50"
+                                cy="50"
+                                r="43"
+                            ></circle>
+
+                        </svg>
+
+                        <div class="timer-number">
+                            <strong id="timer">15</strong>
+                            <span>SEC</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUESTION -->
+
+                <div class="question-area">
+
+                    <span class="question-label">
+                        QUESTION
+                    </span>
+
+                    <h2 id="question">
+                        Question goes here
+                    </h2>
+
+                    <p id="questionHint">
+                        Choose the best answer.
+                    </p>
+
+                </div>
+
+
+                <!-- ANSWERS -->
+
+                <div class="answers" id="answers"></div>
+
+
+                <!-- EXPLANATION -->
+
+                <div
+                    class="explanation hidden"
+                    id="explanation"
+                >
+                    <div class="explanation-icon">
+                        💡
+                    </div>
+
+                    <div>
+                        <strong id="explanationTitle">
+                            Nice!
+                        </strong>
+
+                        <p id="explanationText"></p>
+                    </div>
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="question-actions">
+
+                    <div class="powerups">
+
+                        <button
+                            class="powerup"
+                            id="fiftyButton"
+                            title="Remove two incorrect answers"
+                        >
+                            <span>½</span>
+                            50/50
+                        </button>
+
+                        <button
+                            class="powerup"
+                            id="timeButton"
+                            title="Add 10 seconds"
+                        >
+                            <span>＋</span>
+                            +10 SEC
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="skip-button"
+                        id="skipButton"
+                    >
+                        SKIP
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </main>
+
+
+            <footer class="quiz-footer">
+
+                <span>
+                    Select an answer to continue
+                </span>
+
+                <span>
+                    QUIZVERSE • 2026
+                </span>
+
+            </footer>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESULT SCREEN
+    ========================== -->
+
+    <section class="screen result-screen hidden" id="resultScreen">
+
+        <div class="result-container">
+
+
+            <div class="result-logo">
+                🏆
+            </div>
+
+
+            <span class="result-eyebrow">
+                QUIZ COMPLETED
+            </span>
+
+
+            <h1 id="resultTitle">
+                Brilliant work!
+            </h1>
+
+            <p id="resultMessage">
+                You completed the challenge.
+            </p>
+
+
+            <!-- SCORE -->
+
+            <div class="final-score">
+
+                <span>YOUR SCORE</span>
+
+                <strong id="finalScore">
+                    0
+                </strong>
+
+                <small>POINTS</small>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="result-stats">
+
+                <div class="result-stat">
+                    <strong id="correctCount">0</strong>
+                    <span>CORRECT</span>
+                </div>
+
+                <div class="result-stat">
+                    <strong id="wrongCount">0</strong>
+                    <span>WRONG</span>
+                </div>
+
+                <div class="result-stat">
+                    <strong id="accuracy">0%</strong>
+                    <span>ACCURACY</span>
+                </div>
+
+                <div class="result-stat">
+                    <strong id="bestStreak">0</strong>
+                    <span>BEST STREAK</span>
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAL BEST -->
+
+            <div
+                class="new-record hidden"
+                id="newRecord"
+            >
+                ✨ NEW PERSONAL BEST!
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="result-actions">
+
+                <button
+                    class="primary-button"
+                    id="playAgainButton"
+                >
+                    <span>PLAY AGAIN</span>
+                    <strong>↻</strong>
+                </button>
+
+                <button
+                    class="secondary-button"
+                    id="homeButton"
+                >
+                    BACK TO HOME
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

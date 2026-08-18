@@ -1,0 +1,2377 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url(https://pngtree.com/free-backgrounds-photos/school);
+}
+
+:root {
+
+    --background: #080b14;
+    --background-two: #0d1120;
+
+    --card: rgba(18, 23, 40, 0.82);
+
+    --primary: #6c63ff;
+    --primary-light: #918aff;
+
+    --cyan: #36d9ff;
+
+    --green: #28d98b;
+    --red: #ff5c73;
+    --yellow: #ffc857;
+
+    --white: #ffffff;
+
+    --text: #f4f6fb;
+    --muted: #8b93a7;
+
+    --border: rgba(255,255,255,0.08);
+
+    --shadow:
+        0 30px 80px rgba(0,0,0,0.35);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: "DM Sans", sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(5, 7, 15, 0.75),
+            rgba(5, 7, 15, 0.85)
+        ),
+        url("./quiz-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: var(--text);
+
+    overflow-x: hidden;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+.gradient-orb {
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    opacity: .13;
+
+    animation:
+        floating 14s ease-in-out infinite;
+}
+
+
+.orb-one {
+
+    top: -250px;
+    left: -180px;
+
+    background:
+        #695cff;
+}
+
+
+.orb-two {
+
+    right: -200px;
+    top: 30%;
+
+    background:
+        #00c8ff;
+
+    animation-delay: -5s;
+}
+
+
+.orb-three {
+
+    left: 30%;
+    bottom: -350px;
+
+    background:
+        #d63cff;
+
+    animation-delay: -9s;
+}
+
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0,0,0);
+    }
+
+    50% {
+        transform:
+            translate3d(0,-45px,0);
+    }
+}
+
+
+.noise {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .035;
+
+    background-image:
+        url(
+            "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+        );
+}
+
+
+/* =========================================
+   UTILITIES
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+.screen {
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   START SCREEN
+========================================= */
+
+.start-screen {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 20px;
+}
+
+
+.start-content {
+
+    width: min(800px, 100%);
+
+    text-align: center;
+
+    animation:
+        fadeUp .8s ease;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 55px;
+
+    text-align: left;
+}
+
+
+.logo-symbol {
+
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 15px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #4b43d7
+        );
+
+    box-shadow:
+        0 15px 40px
+        rgba(108,99,255,.3);
+}
+
+
+.logo strong {
+
+    display: block;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+}
+
+
+.logo span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   BADGE
+========================================= */
+
+.hero-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    border:
+        1px solid
+        rgba(108,99,255,.25);
+
+    border-radius: 100px;
+
+    background:
+        rgba(108,99,255,.08);
+
+    color:
+        #aaa5ff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.badge-dot {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 12px
+        var(--green);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.start-content h1 {
+
+    max-width: 700px;
+
+    margin:
+        22px auto 18px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        clamp(45px, 8vw, 78px);
+
+    line-height: .98;
+
+    letter-spacing:
+        -4px;
+}
+
+
+.start-content h1 span {
+
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-light),
+            var(--cyan)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.hero-description {
+
+    max-width: 550px;
+
+    margin: auto;
+
+    color:
+        var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.game-features {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin:
+        35px auto;
+
+    max-width: 650px;
+}
+
+
+.feature {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    text-align: left;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .25s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(255,255,255,.045);
+
+    border-color:
+        rgba(108,99,255,.25);
+}
+
+
+.feature-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+
+.feature strong {
+
+    display: block;
+
+    font-size: 10px;
+}
+
+
+.feature span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--muted);
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.primary-button {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap: 25px;
+
+    min-width:
+        210px;
+
+    padding:
+        16px 22px;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #5149d9
+        );
+
+    color:
+        white;
+
+    font-family:
+        "DM Sans";
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 15px 35px
+        rgba(108,99,255,.25);
+
+    transition:
+        .25s ease;
+}
+
+
+.primary-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(108,99,255,.4);
+}
+
+
+.primary-button strong {
+
+    font-size:
+        18px;
+
+    font-weight:
+        400;
+}
+
+
+/* =========================================
+   BEST SCORE
+========================================= */
+
+.best-score {
+
+    margin-top:
+        30px;
+}
+
+
+.best-score span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        2px;
+}
+
+
+.best-score strong {
+
+    margin-left:
+        8px;
+
+    font-family:
+        "Space Grotesk";
+
+    color:
+        var(--yellow);
+
+    font-size:
+        15px;
+}
+
+
+.best-score small {
+
+    margin-left:
+        4px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+}
+
+
+/* =========================================
+   QUIZ SCREEN
+========================================= */
+
+.quiz-screen {
+
+    padding:
+        30px 20px;
+}
+
+
+.quiz-container {
+
+    width:
+        min(1050px, 100%);
+
+    margin:
+        auto;
+}
+
+
+/* =========================================
+   QUIZ HEADER
+========================================= */
+
+.quiz-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        40px;
+}
+
+
+.quiz-brand {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+
+.mini-logo {
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #5048d8
+        );
+
+    font-family:
+        "Space Grotesk";
+
+    font-weight:
+        700;
+}
+
+
+.quiz-brand strong {
+
+    display:
+        block;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        1px;
+}
+
+
+.quiz-brand span {
+
+    display:
+        block;
+
+    margin-top:
+        2px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+/* =========================================
+   HEADER STATS
+========================================= */
+
+.header-stats {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        25px;
+}
+
+
+.header-stat {
+
+    text-align:
+        center;
+}
+
+
+.header-stat span {
+
+    display:
+        block;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+.header-stat strong {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        16px;
+}
+
+
+.streak-stat strong {
+
+    color:
+        var(--yellow);
+}
+
+
+.lives {
+
+    display:
+        flex;
+
+    gap:
+        4px;
+
+    color:
+        var(--red);
+
+    font-size:
+        17px;
+}
+
+
+.lives span.lost {
+
+    color:
+        #353b4b;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-area {
+
+    margin-bottom:
+        18px;
+}
+
+
+.progress-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        8px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        1px;
+}
+
+
+.progress-top strong {
+
+    color:
+        white;
+}
+
+
+.progress-top #category {
+
+    color:
+        var(--primary-light);
+
+    font-weight:
+        700;
+}
+
+
+.muted {
+
+    opacity:
+        .5;
+}
+
+
+.progress-track {
+
+    height:
+        5px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+
+.progress-bar {
+
+    width:
+        10%;
+
+    height:
+        100%;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(108,99,255,.5);
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION CARD
+========================================= */
+
+.question-card {
+
+    position:
+        relative;
+
+    padding:
+        42px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        22px;
+
+    background:
+        var(--card);
+
+    backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+/* =========================================
+   QUESTION TOP
+========================================= */
+
+.question-card-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        flex-start;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 11px;
+
+    border-radius:
+        100px;
+
+    background:
+        rgba(108,99,255,.1);
+
+    border:
+        1px solid
+        rgba(108,99,255,.18);
+
+    color:
+        var(--primary-light);
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+.difficulty.medium {
+
+    color:
+        var(--yellow);
+
+    background:
+        rgba(255,200,87,.07);
+
+    border-color:
+        rgba(255,200,87,.15);
+}
+
+
+.difficulty.hard {
+
+    color:
+        var(--red);
+
+    background:
+        rgba(255,92,115,.07);
+
+    border-color:
+        rgba(255,92,115,.15);
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+.timer {
+
+    position:
+        relative;
+
+    width:
+        72px;
+
+    height:
+        72px;
+
+    margin-top:
+        -15px;
+
+    margin-right:
+        -15px;
+}
+
+
+.timer svg {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    transform:
+        rotate(-90deg);
+}
+
+
+.timer circle {
+
+    fill:
+        none;
+
+    stroke-width:
+        5;
+}
+
+
+.timer-background {
+
+    stroke:
+        rgba(255,255,255,.06);
+}
+
+
+.timer-circle {
+
+    stroke:
+        var(--cyan);
+
+    stroke-linecap:
+        round;
+
+    stroke-dasharray:
+        270;
+
+    stroke-dashoffset:
+        0;
+
+    transition:
+        stroke-dashoffset 1s linear,
+        stroke .3s ease;
+}
+
+
+.timer.warning .timer-circle {
+
+    stroke:
+        var(--yellow);
+}
+
+
+.timer.danger .timer-circle {
+
+    stroke:
+        var(--red);
+}
+
+
+.timer-number {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+.timer-number strong {
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        19px;
+}
+
+
+.timer-number span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        6px;
+
+    letter-spacing:
+        1px;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question-area {
+
+    margin-top:
+        35px;
+
+    max-width:
+        720px;
+}
+
+
+.question-label {
+
+    color:
+        var(--primary-light);
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+}
+
+
+.question-area h2 {
+
+    margin-top:
+        12px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        clamp(28px, 5vw, 42px);
+
+    line-height:
+        1.15;
+
+    letter-spacing:
+        -1px;
+}
+
+
+.question-area p {
+
+    margin-top:
+        10px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        13px;
+
+    margin-top:
+        32px;
+}
+
+
+.answer {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    min-height:
+        68px;
+
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        var(--text);
+
+    cursor:
+        pointer;
+
+    text-align:
+        left;
+
+    transition:
+        .2s ease;
+}
+
+
+.answer:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(108,99,255,.45);
+
+    background:
+        rgba(108,99,255,.06);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.15);
+}
+
+
+.answer-letter {
+
+    width:
+        40px;
+
+    height:
+        40px;
+
+    flex-shrink:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:
+        var(--muted);
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    transition:
+        .2s ease;
+}
+
+
+.answer-text {
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+}
+
+
+.answer-check {
+
+    margin-left:
+        auto;
+
+    width:
+        24px;
+
+    height:
+        24px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    opacity:
+        0;
+
+    font-size:
+        11px;
+}
+
+
+.answer.selected {
+
+    border-color:
+        var(--primary);
+
+    background:
+        rgba(108,99,255,.1);
+}
+
+
+.answer.selected .answer-letter {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+}
+
+
+.answer.correct {
+
+    border-color:
+        var(--green);
+
+    background:
+        rgba(40,217,139,.09);
+
+    animation:
+        correctPulse .35s ease;
+}
+
+
+.answer.correct .answer-letter {
+
+    background:
+        var(--green);
+
+    color:
+        #06170f;
+}
+
+
+.answer.correct .answer-check {
+
+    opacity:
+        1;
+
+    background:
+        var(--green);
+
+    color:
+        #06170f;
+}
+
+
+.answer.wrong {
+
+    border-color:
+        var(--red);
+
+    background:
+        rgba(255,92,115,.09);
+
+    animation:
+        shake .35s ease;
+}
+
+
+.answer.wrong .answer-letter {
+
+    background:
+        var(--red);
+
+    color:
+        white;
+}
+
+
+.answer.wrong .answer-check {
+
+    opacity:
+        1;
+
+    background:
+        var(--red);
+
+    color:
+        white;
+}
+
+
+.answer.disabled {
+
+    pointer-events:
+        none;
+
+    opacity:
+        .35;
+}
+
+
+@keyframes correctPulse {
+
+    50% {
+        transform:
+            scale(1.015);
+    }
+}
+
+
+@keyframes shake {
+
+    25% {
+        transform:
+            translateX(-5px);
+    }
+
+    50% {
+        transform:
+            translateX(5px);
+    }
+
+    75% {
+        transform:
+            translateX(-3px);
+    }
+}
+
+
+/* =========================================
+   EXPLANATION
+========================================= */
+
+.explanation {
+
+    display:
+        flex;
+
+    gap:
+        12px;
+
+    margin-top:
+        18px;
+
+    padding:
+        14px;
+
+    border:
+        1px solid
+        rgba(108,99,255,.15);
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(108,99,255,.06);
+
+    animation:
+        fadeUp .3s ease;
+}
+
+
+.explanation-icon {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    flex-shrink:
+        0;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(108,99,255,.1);
+}
+
+
+.explanation strong {
+
+    display:
+        block;
+
+    font-size:
+        11px;
+}
+
+
+.explanation p {
+
+    margin-top:
+        3px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.question-actions {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-top:
+        25px;
+
+    padding-top:
+        20px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+
+.powerups {
+
+    display:
+        flex;
+
+    gap:
+        8px;
+}
+
+
+.powerup {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        var(--muted);
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+}
+
+
+.powerup span {
+
+    color:
+        var(--primary-light);
+
+    font-size:
+        13px;
+}
+
+
+.powerup:hover:not(:disabled) {
+
+    border-color:
+        rgba(108,99,255,.4);
+
+    color:
+        white;
+}
+
+
+.powerup:disabled {
+
+    opacity:
+        .3;
+
+    cursor:
+        not-allowed;
+}
+
+
+.skip-button {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    border:
+        none;
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+}
+
+
+.skip-button:hover {
+
+    color:
+        white;
+}
+
+
+.skip-button span {
+
+    font-size:
+        16px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.quiz-footer {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-top:
+        15px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        1px;
+}
+
+
+/* =========================================
+   RESULT SCREEN
+========================================= */
+
+.result-screen {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        40px 20px;
+}
+
+
+.result-container {
+
+    width:
+        min(550px, 100%);
+
+    padding:
+        45px;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        25px;
+
+    background:
+        var(--card);
+
+    backdrop-filter:
+        blur(25px);
+
+    box-shadow:
+        var(--shadow);
+
+    animation:
+        resultIn .6s ease;
+}
+
+
+@keyframes resultIn {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            translateY(25px)
+            scale(.96);
+    }
+
+    to {
+        opacity:
+            1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+.result-logo {
+
+    width:
+        75px;
+
+    height:
+        75px;
+
+    margin:
+        0 auto 20px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,200,87,.1);
+
+    font-size:
+        34px;
+
+    box-shadow:
+        0 0 50px
+        rgba(255,200,87,.1);
+}
+
+
+.result-eyebrow {
+
+    color:
+        var(--primary-light);
+
+    font-size:
+        8px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+}
+
+
+.result-container h1 {
+
+    margin-top:
+        10px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        30px;
+}
+
+
+.result-container > p {
+
+    margin-top:
+        6px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================
+   FINAL SCORE
+========================================= */
+
+.final-score {
+
+    margin:
+        30px 0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+}
+
+
+.final-score span {
+
+    color:
+        var(--muted);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        2px;
+}
+
+
+.final-score strong {
+
+    margin-top:
+        5px;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        68px;
+
+    line-height:
+        1;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-light),
+            var(--cyan)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+
+.final-score small {
+
+    margin-top:
+        5px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        2px;
+}
+
+
+/* =========================================
+   RESULT STATS
+========================================= */
+
+.result-stats {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        8px;
+}
+
+
+.result-stat {
+
+    padding:
+        14px 5px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
+
+    border-radius:
+        10px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.result-stat strong {
+
+    display:
+        block;
+
+    font-family:
+        "Space Grotesk";
+
+    font-size:
+        18px;
+}
+
+
+.result-stat span {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        .7px;
+}
+
+
+/* =========================================
+   NEW RECORD
+========================================= */
+
+.new-record {
+
+    margin-top:
+        18px;
+
+    padding:
+        9px;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(40,217,139,.08);
+
+    color:
+        var(--green);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+}
+
+
+/* =========================================
+   RESULT ACTIONS
+========================================= */
+
+.result-actions {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        9px;
+
+    margin-top:
+        25px;
+}
+
+
+.result-actions .primary-button {
+
+    width:
+        100%;
+}
+
+
+.secondary-button {
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        10px;
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        1px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s;
+}
+
+
+.secondary-button:hover {
+
+    color:
+        white;
+
+    border-color:
+        rgba(255,255,255,.2);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .start-screen {
+
+        padding:
+            35px 18px;
+    }
+
+
+    .logo {
+
+        margin-bottom:
+            40px;
+    }
+
+
+    .start-content h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            -2.5px;
+    }
+
+
+    .hero-description {
+
+        font-size:
+            13px;
+    }
+
+
+    .game-features {
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            320px;
+    }
+
+
+    .feature {
+
+        padding:
+            11px;
+    }
+
+
+    .quiz-screen {
+
+        padding:
+            20px 12px;
+    }
+
+
+    .quiz-header {
+
+        margin-bottom:
+            28px;
+    }
+
+
+    .quiz-brand span {
+
+        display:
+            none;
+    }
+
+
+    .header-stats {
+
+        gap:
+            12px;
+    }
+
+
+    .header-stat span {
+
+        font-size:
+            6px;
+    }
+
+
+    .header-stat strong {
+
+        font-size:
+            13px;
+    }
+
+
+    .lives {
+
+        font-size:
+            13px;
+    }
+
+
+    .question-card {
+
+        padding:
+            25px 18px;
+    }
+
+
+    .question-area {
+
+        margin-top:
+            25px;
+    }
+
+
+    .question-area h2 {
+
+        font-size:
+            27px;
+    }
+
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .question-actions {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            15px;
+    }
+
+
+    .quiz-footer {
+
+        flex-direction:
+            column;
+
+        gap:
+            7px;
+
+        text-align:
+            center;
+    }
+
+
+    .result-container {
+
+        padding:
+            35px 20px;
+    }
+
+
+    .result-stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
